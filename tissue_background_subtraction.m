@@ -1,7 +1,7 @@
 clear,clc
 cd('E:\LeeLab-Coop1\test 6 frozen')
 load('new_sub_bkgd1')
-New1 = [24 397 849 902];
+New1 = [24];
 for m = 1
     New = New1(m,:);
     I2=zeros(1,900);
@@ -12,6 +12,7 @@ cd('E:\LeeLab-Coop1\test 6 frozen')
 load('new_sub_bkgd1')
 clear('para')
 A = [I2; ones(1,900)];
+%sample 6 frozen parameters
 A1 = [A(:,400:520) A(:,550:570)];
 %A1 = [A(:,300:700)];
 A2 = A(:,30:900);
@@ -19,7 +20,8 @@ for i = 1:960
     I_tissue(30:900,i) = smooth(I_tissue(30:900,i),11);
     b = I_tissue(:,i);
     b = smooth(b,20,'rloess');
-    b = [b(400:520);b(550:570)];
+    %sample 6 frozen parameters
+    b = [b(370:490);b(520:540)];
     %b = [b(300:700)];
     cvx_begin
         variable x(2)

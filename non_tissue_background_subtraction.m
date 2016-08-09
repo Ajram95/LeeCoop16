@@ -1,10 +1,12 @@
 %%
 
 clear;clc
-cd('E:\LeeLab-Coop1\Frozen tissue\sample12')
+cd('E:\LeeLab-Coop1\Frozen tissue\sample3')
 load('circle_ave_intensity_S_new')
-p1=[535:540 565:585];%AD1769
-p2=[28 29 30 31];%AD1769
+p1=[50 664 697 999 1346 1410];%frozen sample 3
+p2=[330 560 1308 1561];%frozen sample 3
+%p1=[505:510 529:514 554:559];%AD1769
+%p2=[115 116 139 140];%AD1769
 %cd('G:\23IDB_2015_08_07\isolate\raster2')
 %load('circle_ave_intensity_S_new')
 %p1=[117:123 158:164 199:205];%isolate
@@ -30,7 +32,7 @@ IB=sum(I(:,p1)')'/length(p1);
 IB1=smooth(sum(I(:,p2)'/length(p2))'-IB,0.01,'rloess');%intensity of tissues, used as control%%
 
 A=[IB(100:720)./sum(IB(100:720)) IB1(100:720)./sum(IB1(100:720))]';%% august sample setting
-cd('E:\LeeLab-Coop1\Frozen tissue\sample12')
+cd('E:\LeeLab-Coop1\Frozen tissue\sample3')
 load('circle_ave_intensity_S_new')
 for i=1:length(I(1,:))
     %figure(2);hold on;plot(r1(30:end),I(30:end,i)./sum(I(30:end,i)))
